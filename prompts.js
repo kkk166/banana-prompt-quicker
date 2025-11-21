@@ -1,7 +1,7 @@
 const GITHUB_PROMPTS_URL = 'https://raw.githubusercontent.com/glidea/banana-prompt-quicker/main/prompts.json';
 const CACHE_KEY = 'banana_prompts_cache';
 const CACHE_TIMESTAMP_KEY = 'banana_prompts_cache_time';
-const CACHE_DURATION = 60 * 60 * 1000; // 1 hours
+const CACHE_DURATION = 2 * 60 * 1000; // 2 min
 
 window.PromptManager = {
     async get() {
