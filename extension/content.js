@@ -202,15 +202,19 @@ class GeminiAdapter {
     }
 
     createButton() {
+        const isMobile = window.innerWidth <= 768
+
         const btn = document.createElement('button')
         btn.id = 'banana-btn'
         btn.className = 'mat-mdc-button mat-mdc-button-base mat-unthemed'
 
         const updateButtonTheme = () => {
             const colors = this.getThemeColors()
+            const mobile = window.innerWidth <= 768
             btn.style.cssText = `
                 height: 40px;
-                border-radius: 20px;
+                ${mobile ? 'width: 40px;' : ''}
+                border-radius: ${mobile ? '50%' : '20px'};
                 border: none;
                 background: transparent;
                 color: ${colors.text};
@@ -222,14 +226,16 @@ class GeminiAdapter {
                 font-family: 'Google Sans', Roboto, Arial, sans-serif;
                 margin-left: 4px;
                 transition: background-color 0.2s;
-                padding: 0 16px;
-                gap: 8px;
+                padding: ${mobile ? '0' : '0 16px'};
+                gap: ${mobile ? '0' : '8px'};
             `
         }
 
         updateButtonTheme()
         btn.title = '快捷提示'
-        btn.innerHTML = '<span style="font-size: 16px;">🍌</span><span>Prompts</span>'
+        btn.innerHTML = isMobile
+            ? '<span style="font-size: 18px;">🍌</span>'
+            : '<span style="font-size: 16px;">🍌</span><span>Prompts</span>'
 
         btn.addEventListener('mouseenter', () => {
             const colors = this.getThemeColors()
