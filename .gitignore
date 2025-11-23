@@ -1,4 +1,5 @@
 *.pem
+extension.zip
 
 # IDE
 .idea/
